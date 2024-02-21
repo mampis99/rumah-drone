@@ -1,0 +1,84 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Laporan</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Laporan</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Laporan</h3>
+
+                <div class="card-tools">
+                    <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-widget="collapse"
+                        data-toggle="tooltip"
+                        title="Collapse"
+                    >
+                      Export
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 15%">Tanggal</th>
+                    <th>Paket</th>
+                    <th>Customer</th>
+                    <th>No. telp</th>
+                    <th>Alamat</th>
+                    <th>Acc</th>
+                    <th>Opsi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="y in customers">
+                    <td>{{ y.id }}</td>
+                    <td>{{ y.tanggal }}</td>
+                    <td>{{ y.nama_paket }} (Rp.{{ y.price }})</td>
+                    <td>{{ y.name }}</td>
+                    <td>{{ y.no_telp }}</td>
+                    <td>{{ y.address }}</td>
+                    <td>
+                      <div style="display: flex; align-items: center">
+                        <pf-checkbox type="icheck" v-bind:id="y.id" v-if="y.flag == 0" v-model="isChecked" @change="handleTextChange"/>
+                        <pf-checkbox type="icheck" v-bind:id="y.id" v-if="y.flag == 1" checked v-model="isChecked" @change="handleTextChange"/>
+                        <label
+                            style="margin: 0; padding: 0; padding-left: 4px"
+                        >
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <button class="btn btn-info mr-1" @click="setCustomer(y.id, y.id_paket, y.name, y.no_telp, y.address)">Edit</button>
+                      <button class="btn btn-danger" @click="deleteCustomer(y.id)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.card -->
+</section>
+<!-- /.content -->

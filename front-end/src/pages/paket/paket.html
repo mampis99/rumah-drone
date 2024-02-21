@@ -1,0 +1,79 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Paket</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Paket</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nama Paket</label>
+                            <input type="text" class="form-control" v-model="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Harga</label>
+                            <input type="text" class="form-control" v-model="price">
+                        </div>  
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-success float-right" @click="storePaket">Save</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Data</h3>
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th style="width: 10px">#</th>
+                                <th style="width: 350px">Nama Paket</th>
+                                <th>Harga</th>
+                                <th style="width: 210px">Opsi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="x in pakets">
+                                <td>{{ x.id }}</td>
+                                <td>{{ x.name }}</td>
+                                <td>{{ x.price }}</td>
+                                <td>
+                                  <button class="btn btn-info mr-1" @click="setPaket(x.id, x.name, x.price)">Edit</button>
+                                  <button class="btn btn-danger" @click="deletePaket(x.id)">Delete</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

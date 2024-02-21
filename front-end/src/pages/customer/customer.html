@@ -1,0 +1,112 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Customer</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Customer</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="">Paket</label>
+                            <select class="form-control" v-model="id_paket">
+                                <option>-</option>
+                                <option v-for="(paket, i) in pakets"
+                                            :value="paket['id']"
+                                            :key="i">{{ paket['name'] }} (Rp.{{ paket['price'] }})</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nama Customer</label>
+                            <input type="text" class="form-control" v-model="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="">No. telp</label>
+                            <input type="text" class="form-control" v-model="no_telp">
+                        </div>  
+
+                        <div class="form-group">
+                            <label for="">Address</label>
+                            <input type="text" class="form-control" v-model="address">
+                        </div> 
+
+                        <div class="form-group">
+                            <label for="">Foto KTP</label>
+                            <input type="text" class="form-control" v-model="foto_ktp">
+                        </div> 
+
+                        <div class="form-group">
+                            <label for="">Foto Rumah</label>
+                            <input type="text" class="form-control" v-model="foto_rumah">
+                        </div> 
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-success float-right" @click="storeCustomer">Save</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Data</h3>
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th style="width: 5%">#</th>
+                                <th style="width: 15%">Tanggal</th>
+                                <th>Paket</th>
+                                <th>Customer</th>
+                                <th>No. telp</th>
+                                <th>Alamat</th>
+                                <th>Acc</th>
+                                <th>Opsi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="y in customers">
+                                <td>{{ y.id }}</td>
+                                <td>{{ y.tanggal }}</td>
+                                <td>{{ y.nama_paket }} (Rp.{{ y.price }})</td>
+                                <td>{{ y.name }}</td>
+                                <td>{{ y.no_telp }}</td>
+                                <td>{{ y.address }}</td>
+                                <td>{{ y.flag }}</td>
+                                <td>
+                                  <button class="btn btn-info mr-1" @click="setCustomer(y.id, y.id_paket, y.name, y.no_telp, y.address)">Edit</button>
+                                  <button class="btn btn-danger" @click="deleteCustomer(y.id)">Delete</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
